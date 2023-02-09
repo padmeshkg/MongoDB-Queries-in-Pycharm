@@ -1,16 +1,32 @@
 
 import pymongo
-client = pymongo.MongoClient("mongodb+srv://padmeshkg:lovers9081@padmesh.jw0quv5.mongodb.net/?retryWrites=true&w=majority")
+client = pymongo.MongoClient("mongodb+srv://padmesh:lovers9081@cluster0.sbvylrz.mongodb.net/?retryWrites=true&w=majority")
 db = client.test
 print (db)
 
-d ={
+data = {
     "name": "Padmesh",
     "emailid" : "padmeshkg@gmail.com",
-    "surname": "kumar"
+    "subject": ["data science", 'sql', 'python']
 }
 
-db1 = client['mongo']
-coll = db1['test']
-coll.insert(d)
+list_of_records = [
+    {'companyName': 'iNeuron',
+     'product': 'Affordable AI',
+     'courseOffered': 'Machine Learning with Deployment'},
+
+    {'companyName': 'iNeuron',
+     'product': 'Affordable AI',
+     'courseOffered': 'Deep Learning for NLP and Computer vision'},
+
+    {'companyName': 'iNeuron',
+     'product': 'Master Program',
+     'courseOffered': 'Data Science Masters Program'}
+]
+
+
+database  = client['myinfo']
+collection = database['padmesh']
+#collection.insert_one(data)
+collection.insert_many(list_of_records)
 
